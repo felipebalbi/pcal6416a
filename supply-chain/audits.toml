@@ -1,0 +1,196 @@
+
+# cargo-vet audits file
+
+[[audits.anyhow]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+version = "1.0.102"
+notes = "Full audit: vtable-based type-erased Error. All unsafe sound. deny(unsafe_op_in_unsafe_fn). build.rs does rustc feature probing only. Assisted-by: GitHub Copilot:claude-opus-4.6 cargo-vet"
+
+[[audits.cfg-if]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "1.0.3 -> 1.0.4"
+notes = "Delta: macro refactor to tt-munching. No unsafe. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.defmt]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "0.3.100 -> 0.3.10"
+notes = "Downgrade delta from compat shim to full impl. Unsafe FFI is sound. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.defmt]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "1.0.1 -> 1.1.0"
+notes = "Delta: Format impls for fmt::Error and Wrapping, xtensa target. No new unsafe. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.defmt-macros]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "1.0.1 -> 0.4.0"
+notes = "Downgrade delta: removes configurable defmt crate path. No unsafe. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.defmt-macros]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "1.0.1 -> 1.1.0"
+notes = "Delta: adds transparent/bound derive attrs. No unsafe. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.defmt-parser]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "1.0.0 -> 0.4.1"
+notes = "Downgrade delta: removes Cbor display hint variant. No unsafe. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.embassy-sync]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "0.8.0 -> 0.7.2"
+notes = "Downgrade delta. No new unsafe. Removes futures_sink impls, reverts Signal::reset. no_std crate. Assisted-by: GitHub Copilot:claude-opus-4.6 cargo-vet"
+
+[[audits.embedded-hal]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "1.0.0 -> 1.0.0@git:e6b10a6623db89406784044a4a432cd2fec66a65"
+importable = false
+notes = "Delta: adds core::error::Error impls, bumps MSRV, adds Copy bound to AddressMode. No unsafe, no_std. Assisted-by: GitHub Copilot:claude-opus-4.6 cargo-vet"
+
+[[audits.embedded-hal-async]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "1.0.0 -> 1.0.0@git:e6b10a6623db89406784044a4a432cd2fec66a65"
+importable = false
+notes = "Delta: adds async GPIO traits, re-exports error types, removes build.rs. No unsafe, no_std. Assisted-by: GitHub Copilot:claude-opus-4.6 cargo-vet"
+
+[[audits.embedded-hal-mock]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-run"
+delta = "0.8.0 -> 0.11.1"
+notes = "Delta: adds embedded-hal 1.x support. No unsafe, test mock library. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.embedded-time]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-run"
+version = "0.12.1"
+notes = "Full: no_std time lib. deny(unsafe_code). Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.futures-core]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "0.3.31 -> 0.3.32"
+notes = "Delta: AtomicWaker state-release simplified. No new unsafe. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.heapless]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "0.9.2 -> 0.9.1"
+notes = "Downgrade: net reduction of unsafe surface. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.itoa]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "1.0.15 -> 1.0.18"
+notes = "Delta: internal algorithm refactor replacing raw ptr arithmetic with MaybeUninit::write. Unsafe reduced. No build script, no_std. Assisted-by: GitHub Copilot:claude-opus-4.6 cargo-vet"
+
+[[audits.memchr]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "2.7.6 -> 2.8.0"
+notes = "Delta: adds owned finder builder methods. No unsafe, no build script, no powerful imports. Assisted-by: GitHub Copilot:claude-opus-4.6 cargo-vet"
+
+[[audits.num]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-run"
+delta = "0.4.0 -> 0.3.1"
+notes = "Downgrade: version-only dep bumps. no_std meta-crate. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.num-complex]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-run"
+delta = "0.4.2 -> 0.3.1"
+notes = "Downgrade: removes ComplexFloat, bytemuck. Feature subset. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.num-rational]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-run"
+delta = "0.4.1 -> 0.3.2"
+notes = "Downgrade: removes Default impl, ldexp. Pure math. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.prettyplease]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+version = "0.2.37"
+notes = "Full audit: no unsafe code. Build script only reads CARGO_PKG_VERSION. Pure computational syn-to-string pretty-printer. Assisted-by: GitHub Copilot:claude-opus-4.6 cargo-vet"
+
+[[audits.proc-macro2]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "1.0.94 -> 1.0.95"
+notes = "Delta: SourceFile removed, replaced by Span::file(). No unsafe. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.rustc-hash]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "2.1.1 -> 2.1.2"
+notes = "Delta: refactors hash_bytes bulk loop, broadens arch support, adds const Default. No unsafe, no_std. Assisted-by: GitHub Copilot:claude-opus-4.6 cargo-vet"
+
+[[audits.serde_json]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+version = "1.0.149"
+notes = "Full audit: 12 unsafe blocks all sound (repr(transparent) transmutes, from_utf8_unchecked on validated data, WTF-8 encoding). build.rs reads cfg env vars only. Assisted-by: GitHub Copilot:claude-opus-4.6 cargo-vet"
+
+[[audits.stable_deref_trait]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "1.2.0 -> 1.2.1"
+notes = "Delta: adds StableDeref for Cow types, sound. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.syn]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "2.0.109 -> 2.0.99"
+notes = "Downgrade delta: parser logic adjustments. No new unsafe. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.syn]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "2.0.109 -> 2.0.104"
+notes = "Downgrade delta: const trait bound parsing changes. No new unsafe. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.syn]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "2.0.110 -> 2.0.117"
+notes = "Delta: no_std migration, receiver parsing fix. No new unsafe. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.thiserror]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "2.0.17 -> 2.0.12"
+notes = "Downgrade delta: build.rs generates versioned __private module. No new unsafe. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.thiserror]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "2.0.17 -> 2.0.18"
+notes = "Delta: build.rs match-to-let-else refactor. No new unsafe. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.thiserror-impl]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "2.0.17 -> 2.0.12"
+notes = "Downgrade delta: __private module refactor. No unsafe. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.thiserror-impl]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "2.0.17 -> 2.0.18"
+notes = "Delta: conditional clippy lint allows. No unsafe. Assisted-by: copilot-cli:claude-opus-4.6"
+
+[[audits.zmij]]
+who = "Jerry Xie <jerryxie@microsoft.com>"
+criteria = "safe-to-deploy"
+delta = "1.0.20 -> 1.0.21"
+notes = "Delta: refactors pow10 table to const fn. Unsafe pointer arithmetic bounds verified sound. No API changes. no_std. Assisted-by: GitHub Copilot:claude-opus-4.6 cargo-vet"
